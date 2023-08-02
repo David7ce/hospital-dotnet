@@ -1,4 +1,4 @@
-# App Hospita with dotnet (C# and SQl server)
+# App Hospital with dotnet (C# and SQl server)
 
 Devloped in Visual Studio + SQL Server Management Studio (SSMS)
 

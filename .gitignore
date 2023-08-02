@@ -1,0 +1,11 @@
+# .gitignore for C# projects
+
+# Build artifacts
+/bin/
+/obj/
+/Connected Services/
+
+# IDE-specific folders
+.vs/
+.idea/
+.vscode/

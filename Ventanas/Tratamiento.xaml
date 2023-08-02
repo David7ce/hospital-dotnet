@@ -1,0 +1,59 @@
+﻿<Window x:Class="AppHospital.Tratamiento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppHospital"
+        mc:Ignorable="d"
+        Title="Tratamiento" Height="530" Width="830">
+    <!-- 
+	    Height="450" Width="800" // tamaño original
+	-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="310"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.ColumnSpan="5" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="Tratamiento"/>
+
+        <Label Grid.Row="1" Width="70" Height="30" HorizontalAlignment="Center" Content="ID Paciente" Margin="0,30,0,64"/>
+        <TextBox Grid.Column="0" Grid.Row="1" Name="txtIdPaciente" Width="100" Height="25" HorizontalAlignment="Center" Margin="0,44,0,15" />
+
+        <Label Grid.Column="1" Grid.Row="1" Width="62" Height="30" HorizontalAlignment="Center" Content="ID Doctor" Margin="0,30,0,64"/>
+        <TextBox Name="txtIdDoctor" Grid.Column="1" Grid.Row="1" Width="100" Height="25" HorizontalAlignment="Center" Margin="0,44,0,15" />
+
+        <Label Grid.Column="2" Grid.Row="1" Width="90" Height="30" HorizontalAlignment="Center" Content="Medicamento" Margin="0,30,0,64"/>
+        <TextBox Name="txtMedicamento" Grid.Column="2" Grid.Row="1" Width="100" Height="25" HorizontalAlignment="Left" Margin="30,64,0,35" />
+
+        <Label Grid.Column="3" Grid.Row="1" Width="50" Height="30" HorizontalAlignment="Center" Content="Dosis" Margin="0,30,0,64"/>
+        <TextBox Name="txtDosis" Grid.Column="3" Grid.Row="1" Width="100" Height="25" HorizontalAlignment="Center"  Margin="0,44,0,15" />
+
+        <Label Grid.Column="4" Grid.Row="1" Width="60" Height="30" HorizontalAlignment="Center" Content="Duracion" Margin="0,30,0,64"/>
+        <TextBox Name="txtDuracion" Grid.Column="4" Grid.Row="1" Width="100" Height="25" HorizontalAlignment="Center" Margin="0,64,0,35" />
+
+        <!-- Listboxes -->
+        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Width="120" Height="30" Margin="64,17,136,263" Content="Pacientes / Doctores" />
+        <ListBox Name="lstboxPacienteDoctor" SelectionChanged="lstboxPacienteDoctor_SelectionChanged" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" Width="200" Margin="35,57,85,131" />
+
+        <Label Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Width="100" Height="30" Margin="146,21,74,259" Content="Tratamientos" />
+        <ListBox Name="lstboxTratamiento" SelectionChanged="lstboxTratamiento_SelectionChanged" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Width="200" Margin="85,57,35,131" />
+
+        <!-- Botones -->
+        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Height="30" Margin="151,64,84,216" Click="btnRegistrar" Background="#FFF9A0A0" Content="Registrar" />
+        <Button Grid.ColumnSpan="2"                 Grid.Row="2" Width="100" Height="30" Margin="75,78,145,202" Click="btnMostrarPaciente" Background="#FFF9A0A0" Content="Mostrar pacientes" />
+        <Button Grid.ColumnSpan="2"                 Grid.Row="2" Width="100" Height="30" Margin="75,120,145,160" Click="btnMostrarDoctor" Background="#FFF9A0A0" Content="Mostrar doctores" />
+        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Margin="151,104,84,178" Click="btnModificar" Background="#FFF9A0A0" Content="Modificar" />
+        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Height="30" Margin="151,141,84,139" Click="btnEliminarListbox" Background="#FFF9A0A0" Content="Eliminar" />
+
+        <Button Grid.Column="4" Grid.Row="2" Height="30" Margin="66,220,15,60" Click="btnVolver" Background="#FFC7C7C7" Content="Volver"/>
+    </Grid>
+</Window>

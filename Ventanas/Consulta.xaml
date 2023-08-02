@@ -1,0 +1,52 @@
+﻿<Window x:Class="AppHospital.Consulta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppHospital"
+        mc:Ignorable="d"
+        Title="Consulta" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50px"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="270"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Consulta</TextBlock>
+
+        <Label Grid.Column="0" Grid.Row="1" Content="ID paciente" Height="28" Width="70" Margin="65,34,65,102"/>
+        <TextBox x:Name="txtIdPaciente" Grid.Column="0" Grid.Row="1" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <Label Grid.Column="1" Grid.Row="1" Content="ID Doctor" Height="28" Width="70" Margin="65,34,65,102"/>
+        <TextBox x:Name="txtIdDoctor" Grid.Column="1" Grid.Row="1" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <Label Grid.Column="2" Grid.Row="1" Content="Fecha consulta" Height="28" Width="88" Margin="56,34,56,102"/>
+        <DatePicker x:Name="dpFechaConsulta" Grid.Column="2" Grid.Row="1" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <Label Grid.Column="3" Grid.Row="1" Content="Diagnóstico" Height="28" Margin="62,34,62,102"/>
+        <TextBox x:Name="txtDiagnostico" Grid.Column="3" Grid.Row="1" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <Button Click="btnMostrarPaciente" Grid.Column="0" Grid.Row="2" Height="28" Margin="11,90,95,152" Background="#FFF9A0A0" Content="Mostrar Paciente" />
+        <Button Click="btnMostrarDoctor" Grid.Column="0" Grid.Row="2" Height="28" Margin="13,129,100,113" Background="#FFF9A0A0" Content="Mostrar Doctor" />
+
+        <Label Content="Paciente / Doctor"   Grid.ColumnSpan="2" Grid.Row="2" Height="200" Width="110" Margin="188,9,0,0"    HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ListBox Name="lstboxPacienteDoctor" Grid.ColumnSpan="2" Grid.Row="2" Height="200" Width="220" Margin="169,37,11,33" SelectionChanged="lstboxPacienteDoctor_SelectionChanged" />
+
+        <Label  Content="Consulta"      Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0" />
+        <ListBox Name="lstboxConsulta" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Height="200" Width="220" Margin="180,38,169,32" SelectionChanged="lstboxConsulta_SelectionChanged"/>
+
+        <Button Click="btnRegistrar" Grid.Column="3" Grid.Row="2" Width="60" Height="28" Margin="48,76,92,166"  Background="#FFF9A0A0" Content="Registrar" />
+        <Button Click="btnModificar" Grid.Column="3" Grid.Row="2" Width="60" Height="28" Margin="46,116,94,126" Background="#FFF9A0A0" Content="Modificar" />
+        <Button Click="btnEliminar"  Grid.Column="3" Grid.Row="2" Width="60" Height="28" Margin="46,157,94,85"  Background="#FFF9A0A0" Content="Eliminar" />
+
+        <Button Grid.Column="3" Grid.Row="2" Width="60" Height="28" Margin="123,205,17,17" Click="btnVolver" Background="#FFC7C7C7" Content="Volver"/>
+    </Grid>
+</Window>

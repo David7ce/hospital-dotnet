@@ -1,12 +1,3 @@
-# App Hospital with dotnet (C# and SQl server)
-
-Devloped in Visual Studio + SQL Server Management Studio (SSMS)
-
-## Create database
-
-- [Hospital Database](hospitaldb.sql)
-
-```sql
 CREATE DATABASE HospitalDB;
 GO
 
@@ -112,7 +103,7 @@ INSERT INTO Paciente (ID, Nombre, Apellido1, Apellido2, Fecha_Nacimiento, Direcc
 VALUES (2, 'Freddie', 'Mercury', NULL, '1970-02-02', '456 Calle Champions', '555-222-2222', 'freddie@example.com');
 
 INSERT INTO Paciente (ID, Nombre, Apellido1, Apellido2, Fecha_Nacimiento, Direccion, Telefono, Email)
-VALUES (3, 'Beyonc√©', 'Knowles', 'Carter', '1985-03-03', '789 Calle El Rosario', '555-333-3333', 'beyonce@example.com');
+VALUES (3, 'BeyoncÈ', 'Knowles', 'Carter', '1985-03-03', '789 Calle El Rosario', '555-333-3333', 'beyonce@example.com');
 
 SET IDENTITY_INSERT Paciente OFF;
 
@@ -120,9 +111,9 @@ SET IDENTITY_INSERT Paciente OFF;
 --    tres deportistas (el resto de datos inventados).
 INSERT INTO Especialidad(Nombre)
 VALUES
-    ('Cardiolog√≠a'),
-    ('Ortopedia'), --'Oftalmolog√≠a'
-    ('Medicina Deportiva'); --'Traumatolog√≠a'
+    ('CardiologÌa'),
+    ('Ortopedia'), --'OftalmologÌa'
+    ('Medicina Deportiva'); --'TraumatologÌa'
 
 
 SET IDENTITY_INSERT Doctor ON;
@@ -134,15 +125,15 @@ VALUES
 SET IDENTITY_INSERT Doctor OFF;
 
 -- 3. Insertar 3 consultas en una misma sentencia (un doctor con dos pacientes y otro doctor con uno de esos mismos pacientes.
---    El tercer doctor y un paciente no tendr√°n relaci√≥n con ninguna ‚Äúconsulta‚Äù)
+--    El tercer doctor y un paciente no tendr·n relaciÛn con ninguna ìconsultaî)
 INSERT INTO Consulta (ID_Paciente, ID_Doctor, Fecha_Consulta, Diagnostico)
 VALUES
-    (1, 1, '2023-01-01', 'Hipertensi√≥n'),
+    (1, 1, '2023-01-01', 'HipertensiÛn'),
     (2, 1, '2023-02-02', 'Fractura de pierna'),
     (1, 2, '2023-03-03', 'Dolor de espalda');
 
--- 4. Insertar 3 tratamientos en una misma sentencia que uno (en relaci√≥n a las 3 ‚Äúconsultas‚Äù creadas anteriormente
--- tenga ‚ÄúIbuprofeno‚Äù y duraci√≥n ‚Äú7‚Äù, otro ‚ÄúParacetamol‚Äù y duraci√≥n ‚Äú10‚Äù y el otro con doctor, dosis y duraci√≥n desconocidos)
+-- 4. Insertar 3 tratamientos en una misma sentencia que uno (en relaciÛn a las 3 ìconsultasî creadas anteriormente
+-- tenga ìIbuprofenoî y duraciÛn ì7î, otro ìParacetamolî y duraciÛn ì10î y el otro con doctor, dosis y duraciÛn desconocidos)
 INSERT INTO Tratamiento (ID_Paciente, ID_Doctor, Medicamento, Dosis, Duracion)
 VALUES
     (1, 1, 'Ibuprofeno', '200 mg', 7),
@@ -154,7 +145,7 @@ SELECT COUNT(*) AS 'Total de pacientes no llamados Pepe'
 FROM Paciente
 WHERE Nombre <> 'Pepe';
 
--- 6. Obtener el promedio de d√≠as de la duraci√≥n de los tratamientos, redondeando por encima sin decimales.
+-- 6. Obtener el promedio de dÌas de la duraciÛn de los tratamientos, redondeando por encima sin decimales.
 SELECT CEILING(AVG(Duracion)) AS Promedio_Duracion_Tratamiento
 FROM Tratamiento;
 
@@ -181,28 +172,28 @@ SELECT Nombre, Apellido1, Apellido2, Fecha_Nacimiento
 FROM Paciente
 WHERE ID NOT IN (SELECT ID_Paciente FROM Consulta);
 
--- 11. Obtener el nombre y tel√©fono de los pacientes que hayan tenido un tratamiento
---     con el medicamento llamado "Aspirina" o "Ibuprofeno" durante m√°s de 10 d√≠as.
+-- 11. Obtener el nombre y telÈfono de los pacientes que hayan tenido un tratamiento
+--     con el medicamento llamado "Aspirina" o "Ibuprofeno" durante m·s de 10 dÌas.
 SELECT p.Nombre, p.Telefono, t.*
 FROM Paciente p
 INNER JOIN Tratamiento t ON p.ID = t.ID_Paciente
 WHERE (t.Medicamento = 'Ibuprofeno' OR  t.Medicamento = 'Aspirina') AND t.Duracion > 10;
 
 -- 12. Obtener el nombre, email y fecha de nacimiento de los pacientes que hayan tenido tratamientos
---     con una duraci√≥n superior a 7 d√≠as e inferior a 11 d√≠as, con una dosis de "2 pastillas al d√≠a".
+--     con una duraciÛn superior a 7 dÌas e inferior a 11 dÌas, con una dosis de "2 pastillas al dÌa".
 SELECT p.Nombre, p.Email, p.Fecha_Nacimiento
 FROM Paciente p
 INNER JOIN Tratamiento t ON p.ID = t.ID_Paciente
-WHERE t.Duracion > 7 AND t.Duracion < 11 AND t.Dosis = '2 pastillas al d√≠a';
+WHERE t.Duracion > 7 AND t.Duracion < 11 AND t.Dosis = '2 pastillas al dÌa';
 
--- 13. Obtener todos los datos de los pacientes y de sus respectivas consultas (√∫nicamente fecha y diagn√≥stico),
+-- 13. Obtener todos los datos de los pacientes y de sus respectivas consultas (˙nicamente fecha y diagnÛstico),
 --     incluyendo aquellos pacientes que no hayan tenido ninguna consulta.
 SELECT p.*, c.Fecha_Consulta, c.Diagnostico
 FROM Paciente p
 LEFT JOIN Consulta c ON p.ID = c.ID_Paciente;
 
--- 14. Obtener el nombre y especialidad (en may√∫sculas) de los doctores que no hayan realizado
---     ninguna consulta y cuyo primer apellido no tenga como tercer car√°cter una "o".
+-- 14. Obtener el nombre y especialidad (en may˙sculas) de los doctores que no hayan realizado
+--     ninguna consulta y cuyo primer apellido no tenga como tercer car·cter una "o".
 SELECT D.Nombre, UPPER(E.Nombre) AS 'Especialidad'
 FROM Especialidad E
 INNER JOIN Doctor D
@@ -210,25 +201,25 @@ ON D.ID_Especialidad = E.ID
 WHERE D.ID NOT IN (SELECT ID_Doctor FROM Consulta)
 AND SUBSTRING(Apellido1, 3, 1) <> 'o';
 
--- 15. Borrar los tratamientos cuya dosis sea desconocida o inexistente, con duraci√≥n de 7 d√≠as
+-- 15. Borrar los tratamientos cuya dosis sea desconocida o inexistente, con duraciÛn de 7 dÌas
 --     y el medicamento se llame "Ibuprofeno" o "Paracetamol".
 DELETE FROM Tratamiento
 WHERE (Dosis IS NULL) AND Duracion = 7 AND Medicamento IN ('Ibuprofeno', 'Paracetamol');
 
--- 16. Obtener el nombre (con alias "Nombre del doctor en may√∫sculas") y primer apellido
---    (con alias "Primer apellido del doctor en min√∫sculas") de los doctores y todos los datos de
+-- 16. Obtener el nombre (con alias "Nombre del doctor en may˙sculas") y primer apellido
+--    (con alias "Primer apellido del doctor en min˙sculas") de los doctores y todos los datos de
 --    sus respectivas consultas, incluyendo aquellos doctores que no hayan realizado ninguna consulta.
-SELECT UPPER(d.Nombre) AS "Nombre del doctor en may√∫sculas", LOWER(d.Apellido1) AS "Primer apellido del doctor en min√∫sculas", c.*
+SELECT UPPER(d.Nombre) AS "Nombre del doctor en may˙sculas", LOWER(d.Apellido1) AS "Primer apellido del doctor en min˙sculas", c.*
 FROM Doctor d
 LEFT JOIN Consulta c ON d.ID = c.ID_Doctor;
 
 -- 17. Obtener el Id y nombre de los doctores y sus respectivos tratamientos asociados, excluyendo aquellos
--- doctores que no hayan realizado ning√∫n tratamiento y aquellos tratamientos que no est√©n asociados a ning√∫n doctor.
+-- doctores que no hayan realizado ning˙n tratamiento y aquellos tratamientos que no estÈn asociados a ning˙n doctor.
 SELECT d.ID, d.Nombre, t.*
 FROM Doctor d
 INNER JOIN Tratamiento t ON d.ID = t.ID_Doctor;
 
--- 18. Nombre de los doctores y de sus pacientes, junto a los medicamentos, dosis y duraci√≥n de sus tratamientos,
+-- 18. Nombre de los doctores y de sus pacientes, junto a los medicamentos, dosis y duraciÛn de sus tratamientos,
 -- cuyo medicamento no termine en "no" y la dosis contenga la palabra "semanal".
 SELECT d.Nombre AS "Nombre Doctor", p.Nombre AS "Nombre Paciente", t.Medicamento, t.Dosis, t.Duracion
 FROM Doctor d
@@ -244,11 +235,10 @@ INNER JOIN Paciente p ON p.ID = c.ID_Paciente
 INNER JOIN Tratamiento t ON t.ID_Paciente = p.ID;
 
 -- 20. Obtener todos los datos de los pacientes y de los doctores que los han tratado, en alguna consulta
---     anterior al 10/03/2023 y que le han asignado alg√∫n tratamiento con duraci√≥n mayor a 5 d√≠as.
+--     anterior al 10/03/2023 y que le han asignado alg˙n tratamiento con duraciÛn mayor a 5 dÌas.
 SELECT p.*, d.*
 FROM Consulta c
 INNER JOIN Paciente p ON p.ID = c.ID_Paciente
 INNER JOIN Tratamiento t ON t.ID_Paciente = p.ID
 INNER JOIN Doctor d ON d.ID = t.ID_Doctor
 WHERE c.Fecha_Consulta < '2023-03-10' AND t.Duracion > 5;
-```

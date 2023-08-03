@@ -19,9 +19,6 @@ namespace AppHospital
         {
             InitializeComponent();
 
-            // Establecer la ubicación de inicio de la ventana en el centro de la pantalla
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
             //this.Width = 650;
             //this.Height = 1000;
 

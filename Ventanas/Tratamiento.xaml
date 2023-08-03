@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppHospital"
         mc:Ignorable="d"
-        Title="Tratamiento" Height="530" Width="830">
+        Title="Tratamiento" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <!-- 
 	    Height="450" Width="800" // tamaño original
 	-->
-    <Grid>
+    <Grid Margin="0,-1,0,1">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="310"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -48,12 +48,12 @@
         <ListBox Name="lstboxTratamiento" SelectionChanged="lstboxTratamiento_SelectionChanged" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Width="200" Margin="85,57,35,131" />
 
         <!-- Botones -->
-        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Height="30" Margin="151,64,84,216" Click="btnRegistrar" Background="#FFF9A0A0" Content="Registrar" />
-        <Button Grid.ColumnSpan="2"                 Grid.Row="2" Width="100" Height="30" Margin="75,78,145,202" Click="btnMostrarPaciente" Background="#FFF9A0A0" Content="Mostrar pacientes" />
-        <Button Grid.ColumnSpan="2"                 Grid.Row="2" Width="100" Height="30" Margin="75,120,145,160" Click="btnMostrarDoctor" Background="#FFF9A0A0" Content="Mostrar doctores" />
-        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Margin="151,104,84,178" Click="btnModificar" Background="#FFF9A0A0" Content="Modificar" />
-        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Height="30" Margin="151,141,84,139" Click="btnEliminarListbox" Background="#FFF9A0A0" Content="Eliminar" />
+        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Height="30" Margin="151,64,84,206" Click="btnRegistrar" Background="#FFF9A0A0" Content="Registrar" />
+        <Button Grid.ColumnSpan="2"                 Grid.Row="2" Width="100" Height="30" Margin="75,78,145,192" Click="btnMostrarPaciente" Background="#FFF9A0A0" Content="Mostrar pacientes" />
+        <Button Grid.ColumnSpan="2"                 Grid.Row="2" Width="100" Height="30" Margin="75,120,145,150" Click="btnMostrarDoctor" Background="#FFF9A0A0" Content="Mostrar doctores" />
+        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Margin="151,104,84,174" Click="btnModificar" Background="#FFF9A0A0" Content="Modificar" />
+        <Button Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Height="30" Margin="151,136,84,134" Click="btnEliminarListbox" Background="#FFF9A0A0" Content="Eliminar" />
 
-        <Button Grid.Column="4" Grid.Row="2" Height="30" Margin="66,220,15,60" Click="btnVolver" Background="#FFC7C7C7" Content="Volver"/>
+        <Button Grid.Column="4" Grid.Row="2" Height="30" Margin="60,220,21,50" Click="btnVolver" Background="#FFC7C7C7" Content="Volver"/>
     </Grid>
 </Window>

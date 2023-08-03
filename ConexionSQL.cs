@@ -9,7 +9,7 @@ namespace AppHospital
         public string crearConexion()
         {
             // cambiar la frase de conexión según el equipo, en computadora de casa es con un 1 al final
-            return ConfigurationManager.ConnectionStrings["AppHospital.Properties.Settings.HospitalDBConnectionString"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["AppHospital.Properties.Settings.HospitalDBConnectionString1"].ConnectionString;
         }
     }
 }

@@ -12,6 +12,8 @@ namespace AppHospital
     public partial class MainWindow : Window
     {
         /*
+         * - [ ] Método limpiar
+         * 
          * Ventana Doctor:
          *    - [x] Mostrar Doctor
          *    - [x] Agregar Doctor
@@ -47,7 +49,7 @@ namespace AppHospital
          *    
          * Ventana Enfermeria:
          *    - [x] Mostrar Supervisor(Doctor)
-         *    - [ ] Seleccionar Supervisor(Doctor) y Mostrar Enfermero/a
+         *    - [x] Mostrar Enfermero/a
          *    - [x] Agregar Enfermero/a
          *    - [x] Eliminar Enfermero/a
          *    - [x] Modificar Enfermero/a
@@ -59,12 +61,6 @@ namespace AppHospital
         public MainWindow()
         {
             InitializeComponent();
-
-            // Establecer la ubicación de inicio de la ventana en el centro de la pantalla
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-            // this.Width = 650;
-            // this.Height = 1000;
 
             InicializarConexion();
         }
@@ -135,12 +131,6 @@ namespace AppHospital
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
-        }
-
-        // Métodos de selección
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

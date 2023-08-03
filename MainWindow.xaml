@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppHospital"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <!-- Icon="img/icon.png" -->
     <Grid>
         <Grid.RowDefinitions>

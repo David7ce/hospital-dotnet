@@ -19,9 +19,6 @@ namespace AppHospital.Ventanas
         {
             InitializeComponent();
 
-            // Establecer la ubicación de inicio de la ventana en el centro de la pantalla
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
             InicializarConexion();
         }
 
@@ -70,11 +67,13 @@ namespace AppHospital.Ventanas
                 miConexionSql.Open();
                 miComandoSql.ExecuteNonQuery();
                 miConexionSql.Close();
+
+                Mostrar();
                 MessageBox.Show("Personal de enfermería insertado correctamente!");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al insertar el personal de enfermería.");
+                MessageBox.Show("Error al insertar el personal de enfermería: " + ex.Message);
             }
         }
 
@@ -106,11 +105,11 @@ namespace AppHospital.Ventanas
 
                 using (miAdaptadorSql)
                 {
-                    DataTable doctoresTabla = new DataTable();
-                    miAdaptadorSql.Fill(doctoresTabla);
+                    DataTable islaTabla = new DataTable();
+                    miAdaptadorSql.Fill(islaTabla);
                     cmbIsla.DisplayMemberPath = "infoIsla";
                     cmbIsla.SelectedValuePath = "ID";
-                    cmbIsla.ItemsSource = doctoresTabla.DefaultView;
+                    cmbIsla.ItemsSource = islaTabla.DefaultView;
                 }
             }
             catch (Exception ex)
@@ -209,9 +208,9 @@ namespace AppHospital.Ventanas
                 string apellido2 = txtApellido2.Text;
                 string nifNie = txtNifNie.Text;
                 string telefono = txtTelefono.Text;
-                string isla = cmbIsla.SelectedValue.ToString(); // txtIsla.Text;
+                string isla = cmbIsla.SelectedValue.ToString();
                 string fechaAlta = dpFechaAlta.Text;
-                string idSupervisor = cmbSupervisor.SelectedValue.ToString(); // txtSupervisor.Text
+                string idSupervisor = cmbSupervisor.SelectedValue.ToString();
 
                 string consulta = $"UPDATE Personal_Enfermeria SET Nombre='{nombre}', Apellido1='{apellido1}', Apellido2='{apellido2}', " +
                      $"NIF_NIE='{nifNie}', telefono='{telefono}', Isla_Residencia='{isla}', Fecha_Alta='{fechaAlta}', ID_Supervisor='{idSupervisor}' " +
